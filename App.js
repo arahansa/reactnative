@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -21,10 +21,11 @@ import {
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import Header from  './src/header'
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -33,15 +34,12 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const [appName] = useState('My First App')
+
   return (
     <View style={styles.mainView}>
+        <Header name={appName} />
         <View style={styles.subView}>
-            <Text style={styles.mainText}>Hello World</Text>
-        </View>
-        <View style={styles.subView}>
-            <Text>Hello World</Text>
-        </View>
-        <View style={styles.anotherSubView}>
             <Text style={styles.mainText}>Hello World</Text>
         </View>
     </View>
@@ -51,16 +49,14 @@ const App: () => Node = () => {
 const styles = StyleSheet.create({
   mainView: {
       flex: 1,
-      backgroundColor: "green",
+      backgroundColor: "white",
       height: "100%",
       alignItems: "center",
       justifyContent: "center"
   },
   subView: {
-      flex: 1,
       backgroundColor: "yellow",
       marginBottom: 10,
-      width: "50%"
   },
   anotherSubView: {
       flex: 2,
@@ -71,8 +67,8 @@ const styles = StyleSheet.create({
       justifyContent: "center"
   },
     mainText: {
-      fontSize: 50,
-      fontWeight: "bold",
+      fontSize: 20,
+      fontWeight: "normal",
         color: "red",
         padding: 20
     }
