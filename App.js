@@ -30,8 +30,7 @@ import Header from  './src/header'
 import Generator from "./src/generator";
 import NumList from "./src/numlist";
 import Input from "./src/input";
-
-
+import PickerCompo from "./src/picker";
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -83,6 +82,7 @@ const App: () => Node = () => {
                    maxLength={100}
 
         />
+        <PickerCompo/>
         <TouchableOpacity
             onPress={onAddTextInput}>
             <Text>hi</Text>
