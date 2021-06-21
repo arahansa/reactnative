@@ -13,7 +13,7 @@ const Input = () => {
                        onChangeText={onChangeInput}
                        multiline={true}
                        maxLength={100}
-                       
+
             />
         </View>
     )

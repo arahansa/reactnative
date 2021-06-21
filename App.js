@@ -9,13 +9,14 @@
 import React, {useCallback, useState} from 'react';
 import type {Node} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    useColorScheme,
+    View,
+    Button, TextInput, TouchableOpacity
 } from 'react-native';
 
 import {
@@ -52,22 +53,52 @@ const App: () => Node = () => {
         setRandom(newArr)
     },[random])
 
+
+
+    const [myTextInput, setMyTextInput] = useState('asdfasdf')
+    const [alphabet, setAlphabet] = useState(['a', 'b', 'c', 'd'])
+
+    const onAddTextInput = useCallback(()=>{
+        setAlphabet(prev => [...prev, myTextInput])
+        setMyTextInput('')
+    },[myTextInput])
+
+
+    const onChangeInput = useCallback((e)=>{
+        setMyTextInput(e)
+    },[])
+
+    const sayHi = () =>{
+      alert('hi')
+    }
+
+
+
   return (
     <View style={styles.mainView}>
-        {/*<Header name={appName} />
-        <View style={styles.subView}>
-            <Text style={styles.mainText}>Hello World</Text>
-        </View>
-        <Generator add={onAddRandomNum} />
-        <ScrollView style={{width: '100%'}}
-            //onMomentumScrollBegin={()=>alert('begin')}
-            // onMomentumScrollEnd={()=>alert('end')}
-            //onContentSizeChange={(width, height)=>alert(height)}
-            bounces={false}
-        >
-            <NumList num={random} delete={onNumDelete}  />
-        </ScrollView>*/}
-        <Input/>
+        <TextInput value={myTextInput}
+                   style={styles.input}
+                   onChangeText={onChangeInput}
+                   multiline={true}
+                   maxLength={100}
+
+        />
+        <TouchableOpacity
+            onPress={onAddTextInput}>
+            <Text>hi</Text>
+        </TouchableOpacity>
+        <Button title={'Add Text Input'}
+            onPress={onAddTextInput}
+        />
+        <ScrollView style={{width: '100%'}}>
+            {
+                alphabet.map((item, index)=>(
+                    <Text style={styles.mainText} key={index}>
+                        {item}
+                    </Text>
+                ))
+            }
+        </ScrollView>
     </View>
   );
 };
@@ -95,7 +126,16 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: "normal",
         color: "red",
-        padding: 20
+        padding: 20,
+        margin: 20,
+        backgroundColor:'pink'
+    },
+    input: {
+        width: '100%',
+        backgroundColor: '#cecece',
+        marginTop: 30,
+        fontSize: 25,
+        padding: 10
     }
 });
 
