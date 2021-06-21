@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -26,7 +26,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Header from  './src/header'
-
+import Generator from "./src/generator";
+import NumList from "./src/numlist";
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -35,6 +36,11 @@ const App: () => Node = () => {
   };
 
   const [appName] = useState('My First App')
+  const [random] = useState([36,9999])
+
+  const onAddRandomNum = useCallback(()=>{
+      alert('Add Random Number!!')
+  },[])
 
   return (
     <View style={styles.mainView}>
@@ -42,6 +48,8 @@ const App: () => Node = () => {
         <View style={styles.subView}>
             <Text style={styles.mainText}>Hello World</Text>
         </View>
+        <Generator add={onAddRandomNum} />
+        <NumList num={random} />
     </View>
   );
 };
@@ -52,7 +60,6 @@ const styles = StyleSheet.create({
       backgroundColor: "white",
       height: "100%",
       alignItems: "center",
-      justifyContent: "center"
   },
   subView: {
       backgroundColor: "yellow",
