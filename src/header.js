@@ -15,14 +15,23 @@ import {
     Text,
     useColorScheme,
     View,
+    TouchableOpacity,
+    TouchableWithoutFeedback
 } from 'react-native';
 
 
 const Header = (props) => {
     return (
-        <View style={styles.header}>
-            <Text>{props.name}</Text>
-        </View>
+        <TouchableOpacity
+            style={styles.header}
+            // onPress={()=>alert('hello world')}
+            // onLongPress={()=>alert('hello world')}
+            onPressIn={()=>alert('hello world')}
+        >
+            <View style={styles.header}>
+                <Text>{props.name}</Text>
+            </View>
+        </TouchableOpacity>
     );
 };
 
