@@ -36,11 +36,17 @@ const App: () => Node = () => {
   };
 
   const [appName] = useState('My First App')
-  const [random] = useState([36,9999])
+  const [random, setRandom] = useState([36,9999])
 
   const onAddRandomNum = useCallback(()=>{
-      alert('Add Random Number!!')
+      const randomNum = Math.floor(Math.random()*100) + 1;
+      setRandom(prev => [...prev, randomNum])
   },[])
+
+    const onNumDelete = useCallback((position)=>{
+        const newArr = random.filter((num, index) => position != index)
+        setRandom(newArr)
+    },[random])
 
   return (
     <View style={styles.mainView}>
@@ -49,7 +55,7 @@ const App: () => Node = () => {
             <Text style={styles.mainText}>Hello World</Text>
         </View>
         <Generator add={onAddRandomNum} />
-        <NumList num={random} />
+        <NumList num={random} delete={onNumDelete}  />
     </View>
   );
 };
