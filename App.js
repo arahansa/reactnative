@@ -28,6 +28,10 @@ import {
 import Header from  './src/header'
 import Generator from "./src/generator";
 import NumList from "./src/numlist";
+import Input from "./src/input";
+
+
+
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -50,7 +54,7 @@ const App: () => Node = () => {
 
   return (
     <View style={styles.mainView}>
-        <Header name={appName} />
+        {/*<Header name={appName} />
         <View style={styles.subView}>
             <Text style={styles.mainText}>Hello World</Text>
         </View>
@@ -62,7 +66,8 @@ const App: () => Node = () => {
             bounces={false}
         >
             <NumList num={random} delete={onNumDelete}  />
-        </ScrollView>
+        </ScrollView>*/}
+        <Input/>
     </View>
   );
 };
