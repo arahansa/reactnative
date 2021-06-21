@@ -15,7 +15,7 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
-  View,
+  View
 } from 'react-native';
 
 import {
@@ -55,7 +55,14 @@ const App: () => Node = () => {
             <Text style={styles.mainText}>Hello World</Text>
         </View>
         <Generator add={onAddRandomNum} />
-        <NumList num={random} delete={onNumDelete}  />
+        <ScrollView style={{width: '100%'}}
+            //onMomentumScrollBegin={()=>alert('begin')}
+            // onMomentumScrollEnd={()=>alert('end')}
+            //onContentSizeChange={(width, height)=>alert(height)}
+            bounces={false}
+        >
+            <NumList num={random} delete={onNumDelete}  />
+        </ScrollView>
     </View>
   );
 };
